@@ -1,0 +1,56 @@
+{% load static%}
+<section class="info_section layout_padding">
+<div class="container">
+    <div class="info_contact">
+    <div class="row">
+        {% for detail in contact_info%}
+        <div class="col-md-4">
+        
+            <img src="{{detail.icon.url}}" alt="">
+            <span>
+            {{detail.dets}}
+            </span>
+        
+        </div>
+        {% endfor %}
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-8 col-lg-9">
+        <div class="info_form">
+        <form action="{% url 'subscribe' %}" method="POST" >
+            {% csrf_token %}
+            <input type="Email" name='Subemail' placeholder="Enter email to subscribe for newsletters">
+            <button type="submit">
+            subscribe
+            </button>
+        </form>
+        </div>
+    </div>
+    <div class="col-md-4 col-lg-3">
+        <div class="info_social">
+        <div>
+            <a href="github.com/therexcodes">
+            <img src="{% static 'images/github.png'%}" alt="">
+            </a>
+        </div>
+        <div>
+            <a href="https://twitter.com/_justRex">
+            <img src="{% static 'images/twitter.png' %}" alt="">
+            </a>
+        </div>
+        <div>
+            <a href="https://www.linkedin.com/in/emmanuel-uloko-83771022b?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BMui2DXeyQQSvy76du%2FCApw%3D%3D">
+            <img src="{% static 'images/linkedin.png' %}" alt="">
+            </a>
+        </div>
+        <div>
+            <a href="https://www.instagram.com/_._rex01_._/">
+            <img src="{% static 'images/instagram.png' %}" alt="">
+            </a>
+        </div>
+        </div>
+    </div>
+    </div>
+</div>
+</section>

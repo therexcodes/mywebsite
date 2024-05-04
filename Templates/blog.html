@@ -1,0 +1,54 @@
+{% extends 'layout.html'%}
+
+
+{%load static%}
+
+{% block body%}
+<link rel="stylesheet" href="{% static 'styles/styless.css'%}">
+<!-- Render  messages -->
+{% if messages%}
+{% for message in messages %}
+    
+        <div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% endif %}" role="alert">
+            {{ message }}
+        </div>
+    
+{% endfor %}
+{%endif%}
+<section>
+    <nav>
+        <div class="container">
+            <div class="navbar">
+                <a class="logo" href="#">TheRexBlog</a>
+                <ul class="nav-links">
+                    <li><a href="{% url 'home' %}">Portfolio</a></li>
+                    <li><a class="active" href="{% url 'blog'%}">Blog</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 class="big-text">BLOG PAGE COMING SOON...</h1>
+    </div>
+</section>
+    <!-- info section -->
+{% include 'info.html'%}
+<!-- end info section -->
+
+<!-- footer section -->
+<footer class="container-fluid footer_section">
+<div class="container">
+    <div class="row">
+    <div class="col-lg-7 col-md-9 mx-auto">
+        <p>
+        &copy; 2024 All Rights Reserved By
+        <a href="{% url 'home'%}">TheRexCodes</a>
+        </p>
+    </div>
+    </div>
+</div>
+</footer>
+<!-- footer section -->
+
+{% endblock %}
+

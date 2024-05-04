@@ -1,0 +1,124 @@
+{% extends 'layout.html'%}
+
+{% load static %}
+{% block body %}
+  <div class="hero_area">
+    <!-- Render  messages -->
+    {% if messages%}
+    {% for message in messages %}
+        
+            <div class="alert {% if message.tags == 'error' %}alert-danger{% elif message.tags == 'success' %}alert-success{% endif %}" role="alert">
+                {{ message }}
+            </div>
+        
+    {% endfor %}
+  {%endif%}
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="container">
+        <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <a class="navbar-brand" href="{% url 'home'%}">
+            <img src="{% static 'mainpage/images/logo.png' %}" alt="">
+            <span>
+              {{bn}}
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="s-1"> </span>
+            <span class="s-2"> </span>
+            <span class="s-3"> </span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item ">
+                  <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'about'%}"> About</a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="{% url 'service' %}"> Services </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'projects'%}"> Projects </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'contact'%}">Contact </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="blog">Blog </a>
+                </li>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+
+  <!-- service section -->
+  <section class="service_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Services
+        </h2>
+      </div>
+
+      <div class="service_container">
+        {% for service in services%}
+        {% if service.active %}
+        <div class="box active">
+        {%else%}
+        <div class="box ">
+          {% endif %}
+            <div class="img-box">
+              <img src="{{service.img.url}}" class="img1" alt="">
+            </div>
+            <div class="detail-box">
+              <h5>
+              {{service.name}}
+              </h5>
+              <p>
+              {{service.desc}}
+              </p>
+            </div>
+          
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+  </section>
+  <!-- end service section -->
+
+  <!-- info section -->
+{% include 'info.html' %}
+  <!-- end info section -->
+
+  <!-- footer section -->
+  <footer class="container-fluid footer_section">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-7 col-md-9 mx-auto">
+          <p>
+            &copy; 2024 All Rights Reserved By
+            <a href="{% url 'home' %}">TheRexCodes</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- footer section -->
+
+
+  <script src="{% static 'mainpage/js/jquery-3.4.1.min.js'%}"></script>
+  <script src="{% static 'mainpage/js/bootstrap.js'%}"></script>
+
+
+{% endblock %}
+
