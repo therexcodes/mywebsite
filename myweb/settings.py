@@ -32,7 +32,7 @@ EMAIL_HOST_PASSWORD = 'a59a65849563e3'
 EMAIL_PORT = '2525'
 EMAIL_BACKEND ='django.core.mail.backends.smtp.EmailBackend'
 
-ALLOWED_HOSTS = ["therexcodes.onrender.com"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
