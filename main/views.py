@@ -25,6 +25,11 @@ def home(request):
         subject = request.POST['email_title']
         message = request.POST['message']
         
+        
+        if not name or not email or not subject or not message:
+            messages.error(request, "please complete the empty field(s)!")
+            return redirect(request.META.get("HTTP_REFERER","/"))
+        
         #email sending
         send_mail(
             subject,
