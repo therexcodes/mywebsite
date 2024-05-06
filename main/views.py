@@ -102,7 +102,7 @@ def contact(request):
         message = request.POST['message']
         
         
-        if not names or not email or not subject or not message:
+        if not name or not email or not subject or not message:
             messages.error(request, "please complete the empty field(s)!")
             return redirect(request.META.get("HTTP_REFERER","/"))
         
